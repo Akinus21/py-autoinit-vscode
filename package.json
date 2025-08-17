@@ -1,0 +1,45 @@
+{
+  "name": "autoinit",
+  "displayName": "AutoInit",
+  "description": "Recursively generate __init__.py with imports and __all__",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Akinus21/py-autoinit-vscode.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "autoinit.generateInit",
+        "title": "Generate __init__.py"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "autoinit.generateInit",
+          "when": "resourceLangId == python || resourceDir",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.1",
+    "typescript": "^5.9.2",
+    "vscode": "^1.1.37"
+  }
+}
