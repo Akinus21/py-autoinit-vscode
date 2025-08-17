@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.3.1] - 2025-08-17
+- Changed menu entry
+
 ## [1.2.0] - 2025-08-17
 ### Added
 - Right-click support for generating `__init__.py` on folders
