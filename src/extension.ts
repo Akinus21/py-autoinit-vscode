@@ -6,7 +6,7 @@ export function activate(context: vscode.ExtensionContext) {
     const disposable = vscode.commands.registerCommand(
         'autoinit.generateInit',
         async (uri?: vscode.Uri) => {
-            let targetFolder: string | undefined;
+            let targetFolder: string;
 
             if (uri && fs.lstatSync(uri.fsPath).isDirectory()) {
                 targetFolder = uri.fsPath;
@@ -19,24 +19,33 @@ export function activate(context: vscode.ExtensionContext) {
                 targetFolder = folders[0].uri.fsPath;
             }
 
-            // Prompt user for verbose option
-            const includeMembers = await vscode.window.showQuickPick(
+            // Prompt for verbose mode
+            const verbosePick = await vscode.window.showQuickPick(
                 ['Yes', 'No'],
-                {
-                    placeHolder: 'Include top-level functions and classes in __init__.py?',
-                }
+                { placeHolder: 'Run in verbose mode (Include top-level functions and classes)?' }
             );
-
-            if (!includeMembers) {
+            if (!verbosePick) {
                 vscode.window.showInformationMessage('Operation cancelled.');
                 return;
             }
+            const verbose = verbosePick === 'Yes';
 
-            const verbose = includeMembers === 'Yes';
-            await generateInitForFolder(targetFolder, true, verbose);
+            // Prompt for recursive mode
+            const recursivePick = await vscode.window.showQuickPick(
+                ['Yes', 'No'],
+                { placeHolder: 'Run in recursive mode?' }
+            );
+            if (!recursivePick) {
+                vscode.window.showInformationMessage('Operation cancelled.');
+                return;
+            }
+            const recursive = recursivePick === 'Yes';
+
+            // Run generateInit for the folder
+            await generateInitForFolder(targetFolder, recursive, verbose);
 
             vscode.window.showInformationMessage(
-                `__init__.py generation complete! Folder: ${targetFolder}, Verbose: ${verbose}`
+                `__init__.py generation complete!\nFolder: ${targetFolder}\nVerbose: ${verbose}\nRecursive: ${recursive}`
             );
         }
     );

@@ -2,7 +2,7 @@
   "name": "autoinit",
   "displayName": "AutoInit",
   "description": "Recursively generate __init__.py with imports and __all__",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.80.0"
   },
