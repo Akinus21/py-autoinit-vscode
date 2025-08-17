@@ -20,7 +20,7 @@
     "commands": [
       {
         "command": "autoinit.generateInit",
-        "title": "Generate __init__.py"
+        "title": "Generate Python init files here"
       }
     ],
     "menus": {
