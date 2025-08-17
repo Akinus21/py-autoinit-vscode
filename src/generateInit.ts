@@ -25,7 +25,8 @@ function parsePythonFile(filePath: string): string[] {
     const lines = content.split('\n');
 
     const members: string[] = [];
-    const regex = /^\s*(async\s+def|def|class)\s+([A-Za-z_][A-Za-z0-9_]*)/;
+    // Match def/class at column 0 only
+    const regex = /^(async\s+def|def|class)\s+([A-Za-z_][A-Za-z0-9_]*)/;
 
     for (const line of lines) {
         const match = line.match(regex);
