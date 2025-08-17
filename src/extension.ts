@@ -12,7 +12,7 @@ function log(message: string) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-    log("Activating AutoInit extension v0.0.1...");
+    log("Activating AutoInit extension...");
 
     const disposable = vscode.commands.registerCommand(
         'autoinit.generateInit',

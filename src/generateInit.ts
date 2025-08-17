@@ -46,7 +46,7 @@ export async function generateInitForFolder(folder: string, recursive = true, ve
         const initFile = path.join(dir, '__init__.py');
 
         const pyFiles = fs.readdirSync(dir)
-            .filter(f => f.endsWith('.py') && f !== '__init__.py');
+            .filter(f => f.endsWith('.py') && !f.startsWith('__'));
 
         const modules: string[] = [];
         const membersMap: Record<string, string[]> = {};
