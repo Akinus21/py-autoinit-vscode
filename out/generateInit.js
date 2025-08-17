@@ -72,7 +72,7 @@ async function generateInitForFolder(folder, recursive = true, verbose = true) {
     for (const dir of folders) {
         const initFile = path.join(dir, '__init__.py');
         const pyFiles = fs.readdirSync(dir)
-            .filter(f => f.endsWith('.py') && f !== '__init__.py');
+            .filter(f => f.endsWith('.py') && !f.startsWith('__'));
         const modules = [];
         const membersMap = {};
         // Process .py files

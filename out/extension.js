@@ -46,7 +46,7 @@ function log(message) {
     outputChannel.appendLine(`[${timestamp}] ${message}`);
 }
 function activate(context) {
-    log("Activating AutoInit extension v0.0.1...");
+    log("Activating AutoInit extension...");
     const disposable = vscode.commands.registerCommand('autoinit.generateInit', async (uri) => {
         let targetFolder;
         if (uri && fs.lstatSync(uri.fsPath).isDirectory()) {
