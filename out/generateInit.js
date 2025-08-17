@@ -56,7 +56,8 @@ function parsePythonFile(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8');
     const lines = content.split('\n');
     const members = [];
-    const regex = /^\s*(async\s+def|def|class)\s+([A-Za-z_][A-Za-z0-9_]*)/;
+    // Match def/class at column 0 only
+    const regex = /^(async\s+def|def|class)\s+([A-Za-z_][A-Za-z0-9_]*)/;
     for (const line of lines) {
         const match = line.match(regex);
         if (match && !match[2].startsWith('_')) {
