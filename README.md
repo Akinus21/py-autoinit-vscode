@@ -100,4 +100,4 @@ We welcome contributions!
 
 ## License
 
-MIT License © 2025 Gabriel Akonom
+MIT License © 2025 Akinus21
